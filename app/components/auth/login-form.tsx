@@ -121,7 +121,7 @@ export function LoginForm({
                     id="email"
                     type="email"
                     {...form.register('email')} // Associa o input ao react-hook-form
-                    placeholder="m@example.com"
+                    placeholder="crm@windel.com.br"
                   />
                 </div>
                 <div className="grid gap-2">

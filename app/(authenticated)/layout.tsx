@@ -1,7 +1,9 @@
 import { AuthProvider } from '@/app/context/auth-context/auth-context';
 import '@/app/styles/globals.css';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { AppSidebar } from '../components/sidebar/app-sidebar';
 import '../globals.css';
 
 const geistSans = Geist({
@@ -29,8 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Envolva a árvore de componentes com o AuthProvider */}
-        <AuthProvider>{children}</AuthProvider>
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarInset>
+            <div className="flex flex-1 flex-col gap-4 px-4 pt-0">
+              <AuthProvider>{children}</AuthProvider>
+            </div>
+          </SidebarInset>
+        </SidebarProvider>
       </body>
     </html>
   );
